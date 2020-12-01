@@ -1,9 +1,9 @@
 # talk-loco-commands
-Official client/server compatible Loco commands implemention.
+Official client/server compatible Loco commands implemention. Check doc for additional description.
 
 ## Contributing
 Check `src/request`, `src/response` directory for already implemented command datas.
-For data structs check `src/struct`.
+For data structs used in many places check `src/structs`.
 
 Example bson command data implemention.
 ```rust

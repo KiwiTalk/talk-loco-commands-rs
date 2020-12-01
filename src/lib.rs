@@ -9,6 +9,10 @@
 pub mod request;
 pub mod response;
 
+pub mod structs;
+
+use std::io::Cursor;
+
 pub use bson_data_derive::BsonData;
 
 use loco_protocol::command::{self, CommandData};
@@ -66,7 +70,7 @@ impl<D: BsonData> BsonCommandData<D> {
     }
 
     fn deserialize(data: &Vec<u8>) -> Result<Self, BsonError> {
-        let doc = bson::to_document(data)?;
+        let doc = bson::Document::from_reader(&mut Cursor::new(data))?;
 
         let decoded = bson::from_document::<D>(doc)?;
 
@@ -110,3 +114,4 @@ impl From<BsonError> for command::Error {
         }
     }
 }
+

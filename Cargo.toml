@@ -3,7 +3,9 @@ name = "talk-loco-commands"
 version = "0.1.0"
 license = "MIT"
 keywords = ["talk", "loco"]
-description = "KakaoTalk Loco command set"
+readme = "readme.md"
+description = "Official Loco command set"
+repository = "https://github.com/storycraft/talk-loco-commands-rs"
 authors = ["storycraft <storycraft@pancake.sh>"]
 edition = "2018"
 
@@ -12,3 +14,5 @@ serde = { version = "1.0", features = ["derive"] }
 bson = "1.1.0"
 loco-protocol = "0.1.0"
 bson-data-derive = { path = "./bson-data-derive" }
+openssl = "0.10.30"
+native-tls = "0.2.6"

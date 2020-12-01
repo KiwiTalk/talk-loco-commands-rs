@@ -8,5 +8,3 @@ pub mod booking;
 pub mod checkin;
 pub mod media;
 pub mod chat;
-
-use serde::{Serialize, Deserialize};
