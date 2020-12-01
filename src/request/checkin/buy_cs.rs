@@ -7,21 +7,15 @@
 use serde::{Serialize, Deserialize};
 use crate::{BsonData, structs::client::ClientInfo};
 
-/// Request loco server host data
+/// Request call server host data.
+/// Checkin response already contains call server info
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
-pub struct Checkin {
+pub struct BuyCS {
 
     #[serde(flatten)]
     pub client: ClientInfo,
 
-    #[serde(rename = "lang")]
-    pub language: String,
-
     #[serde(rename = "countryISO")]
     pub country_iso: String,
-
-    /// Subdevice(PC, Tablet) or not
-    #[serde(rename = "useSub")]
-    pub use_usb: bool
 
 }

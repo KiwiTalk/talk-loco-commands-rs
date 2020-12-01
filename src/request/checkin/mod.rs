@@ -5,5 +5,7 @@
  */
 
 pub mod checkin;
+pub mod buy_cs;
 
 pub use checkin::Checkin;
+pub use buy_cs::BuyCS;

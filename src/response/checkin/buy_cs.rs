@@ -7,24 +7,11 @@
 use serde::{Serialize, Deserialize};
 use crate::BsonData;
  
-/// Answer loco server information
+/// Answer call server information
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
-pub struct Checkin {
+pub struct BuyCS {
 
     pub status: i16,
-
-    /// Loco server ip
-    pub host: String,
-
-    /// Loco server ip(v6)
-    pub host6: String,
-
-    /// Loco server port
-    pub port: i32,
-
-    /// Info cache expire time(?)
-    #[serde(rename = "cacheExpire")]
-    pub cache_expire: i32,
 
     /// Call server ip
     #[serde(rename = "cshost")]

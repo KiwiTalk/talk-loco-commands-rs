@@ -114,4 +114,3 @@ impl From<BsonError> for command::Error {
         }
     }
 }
-
