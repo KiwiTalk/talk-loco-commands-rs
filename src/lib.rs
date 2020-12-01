@@ -4,7 +4,7 @@
  * Copyright (c) storycraft. Licensed under the MIT Licence.
  */
 
-//! Loco commands implemention used in KakaoTalk
+//! Official client/server compatible Loco commands implemention. Check doc for additional description.
 
 pub mod request;
 pub mod response;
