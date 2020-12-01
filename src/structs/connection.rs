@@ -64,15 +64,15 @@ pub struct ConnectionData {
 pub struct HostData {
 
     /// Unknown
-    ssl: Vec<String>,
+    pub ssl: Vec<String>,
 
     /// Unknown
-    v2sl: Vec<String>,
+    pub v2sl: Vec<String>,
 
     /// Usable host list
-    lsl: Vec<String>,
+    pub lsl: Vec<String>,
 
     /// Usable host list (ipv6)
-    lsl6: Vec<String>
+    pub lsl6: Vec<String>
 
 }
