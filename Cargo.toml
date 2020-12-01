@@ -15,4 +15,3 @@ bson = "1.1.0"
 loco-protocol = "0.1.0"
 bson-data-derive = { path = "./bson-data-derive" }
 openssl = "0.10.30"
-native-tls = "0.2.6"

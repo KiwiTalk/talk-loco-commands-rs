@@ -4,6 +4,6 @@
  * Copyright (c) storycraft. Licensed under the MIT Licence.
  */
 
-mod get_conf;
+pub mod get_conf;
 
-pub use get_conf::*;
+pub use get_conf::GetConf;

@@ -4,3 +4,6 @@
  * Copyright (c) storycraft. Licensed under the MIT Licence.
  */
 
+pub mod checkin;
+
+pub use checkin::Checkin;
