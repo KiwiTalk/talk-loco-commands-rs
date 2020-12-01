@@ -11,6 +11,10 @@ use crate::{BsonData, structs::client::ClientInfo};
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
 pub struct Checkin {
 
+    /// Client user id. Login to acquire.
+    #[serde(rename = "userId")]
+    pub user_id: i64,
+
     #[serde(flatten)]
     pub client: ClientInfo,
 

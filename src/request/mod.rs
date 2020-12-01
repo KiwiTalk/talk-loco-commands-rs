@@ -8,3 +8,7 @@ pub mod booking;
 pub mod checkin;
 pub mod media;
 pub mod chat;
+
+pub mod ping;
+
+pub use ping::Ping;

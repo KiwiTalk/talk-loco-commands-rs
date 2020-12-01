@@ -10,14 +10,10 @@ use serde::{Serialize, Deserialize};
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ClientInfo {
 
-    /// Client user id. Login to acquire.
-    #[serde(rename = "userId")]
-    pub user_id: i64,
-
     /// Current OS (win32, android, mac, etc.)
     pub os: String,
 
-    /// Network type (-999 for wired)
+    /// Network type (0 for wired)
     #[serde(rename = "ntype")]
     pub net_type: i16,
 
@@ -25,7 +21,7 @@ pub struct ClientInfo {
     #[serde(rename = "appVer")]
     pub app_version: String,
 
-    /// Network MCCMNC
+    /// Network MCCMNC ("999" for pc)
     #[serde(rename = "MCCMNC")]
     pub mccmnc: String,
 
