@@ -6,7 +6,7 @@
 
 use serde::{Serialize, Deserialize};
 
-/// Request loco server host data
+/// Common client info struct
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ClientInfo {
 
