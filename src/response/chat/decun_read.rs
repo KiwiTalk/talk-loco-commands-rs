@@ -7,7 +7,7 @@
 use serde::{Serialize, Deserialize};
 use crate::BsonData;
 
-/// Message sent from chatroom
+/// Message read by someone
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
 pub struct DecunRead {
 

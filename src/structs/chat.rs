@@ -45,7 +45,7 @@ pub struct Chatlog {
     /// Attachment content
     ///
     /// Json data. Have contents and extra data according to chat type.
-    /// Also known as `extra`.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub attachment: Option<String>,
 
     /// Used on pluschat.
@@ -63,7 +63,7 @@ pub struct Chatlog {
 
     /// Unknown id (Client send count??). Don't confuse with log_id.
     #[serde(rename = "msgId")]
-    pub msg_id: i64
+    pub msg_id: i32
 
 
 }

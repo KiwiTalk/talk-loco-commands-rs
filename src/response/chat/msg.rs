@@ -35,8 +35,10 @@ pub struct Msg {
     #[serde(rename = "li", skip_serializing_if = "Option::is_none")]
     pub link_id: Option<i64>,
 
-    #[serde(rename = "notiRead")]
-    pub noti_read: bool
+    /// Act like no_seen.(?)
+    /// Only appears on openchat
+    #[serde(rename = "notiRead", skip_serializing_if = "Option::is_none")]
+    pub noti_read: Option<bool>
 
 
 }
