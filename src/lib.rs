@@ -24,6 +24,7 @@ pub trait BsonData: Serialize + DeserializeOwned {
 
 }
 
+/// Wrapping request data
 pub struct BsonReqData<D>(D);
 
 impl<D: BsonData> CommandData for BsonReqData<D> {
@@ -79,7 +80,7 @@ impl<D: BsonData> BsonReqData<D> {
 
 }
 
-/// Contains response status, data
+/// Wrapping response status, data
 ///
 /// Note: Official server doesn't include response data if operation failed.
 /// Check `src/structs/client.rs` Status enum for predefined status ids.
