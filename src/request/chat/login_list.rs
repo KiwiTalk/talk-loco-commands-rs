@@ -36,7 +36,7 @@ pub struct LoginList {
     /// Unknown
     pub revision: i32,
 
-    // Unknown
+    /// Unknown
     pub rp: (),
 
     /// Known chatroom id list

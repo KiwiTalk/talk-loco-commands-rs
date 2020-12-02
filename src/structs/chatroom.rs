@@ -53,15 +53,15 @@ pub struct ChatroomListData {
     pub push_alert: bool,
 
     /// Only present if chatroom is Openchat
-    #[serde(flatten)]
+    #[serde(flatten, skip_serializing_if = "Option::is_none")]
     pub link: Option<OpenLinkId>,
 
     /// Chatroom preview icon target user id list
-    #[serde(rename = "i")]
+    #[serde(rename = "i", skip_serializing_if = "Option::is_none")]
     pub icon_user_ids: Option<Vec<i64>>,
 
     /// Chatroom preview icon target user name list
-    #[serde(rename = "k")]
+    #[serde(rename = "k", skip_serializing_if = "Option::is_none")]
     pub icon_user_nicknames: Option<Vec<String>>,
 
     /// Unknown. Always 0 on openchat rooms.
@@ -71,8 +71,10 @@ pub struct ChatroomListData {
     pub s: i64,
 
     /// Unknown. Only appears on openchat rooms.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub o: Option<i32>,
 
     /// Unknown. Only appears on non openchat rooms.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub jn: Option<i32>
 }

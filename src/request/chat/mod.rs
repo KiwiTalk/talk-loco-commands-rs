@@ -5,5 +5,7 @@
  */
 
 pub mod login_list;
+pub mod noti_read;
 
 pub use login_list::LoginList;
+pub use noti_read::NotiRead;

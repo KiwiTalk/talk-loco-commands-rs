@@ -16,7 +16,7 @@ pub struct Chatlog {
     pub log_id: i64,
 
     /// Previous Chatlog id
-    #[serde(rename = "prevId")]
+    #[serde(rename = "prevId", skip_serializing_if = "Option::is_none")]
     pub prev_log_id: Option<i64>,
 
     /// Chatroom id
@@ -52,11 +52,13 @@ pub struct Chatlog {
     ///
     /// * KakaoI = 1
     /// * Bot = 2
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub referer: Option<i8>,
 
     /// Used on pluschat.
     ///
     /// Json data like attachment. Having extra pluschat data like quick reply.
+    #[serde(skip_serializing_if = "Option::is_none")]
     pub supplement: Option<String>,
 
     /// Unknown id (Client send count??). Don't confuse with log_id.

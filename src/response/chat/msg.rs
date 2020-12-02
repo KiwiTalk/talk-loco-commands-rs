@@ -32,7 +32,7 @@ pub struct Msg {
     #[serde(rename = "noSeen")]
     pub no_seen: bool,
 
-    #[serde(rename = "li")]
+    #[serde(rename = "li", skip_serializing_if = "Option::is_none")]
     pub link_id: Option<i64>,
 
     #[serde(rename = "notiRead")]
