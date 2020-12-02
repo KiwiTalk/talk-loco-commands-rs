@@ -121,7 +121,7 @@ impl<D: BsonData> BsonResData<D> {
         }
     }
 
-    pub fn unwrap(self) -> Option<D> {
+    pub fn response(self) -> Option<D> {
         self.response
     }
 
