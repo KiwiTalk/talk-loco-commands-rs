@@ -4,7 +4,9 @@
  * Copyright (c) storycraft. Licensed under the MIT Licence.
  */
 
-//! Official client/server compatible Loco commands implemention. Check doc for additional description.
+//! Official client/server compatible Loco commands implementation.
+//! Check request, response module for command datas.
+//! Check structs module for types used in command datas.
 
 pub mod request;
 pub mod response;
