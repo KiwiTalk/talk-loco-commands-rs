@@ -1,0 +1,42 @@
+/*
+ * Created on Wed Dec 02 2020
+ *
+ * Copyright (c) storycraft. Licensed under the MIT Licence.
+ */
+
+use serde::{Serialize, Deserialize};
+use crate::{BsonData, structs::chat::Chatlog};
+
+/// Message sent from chatroom
+#[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
+pub struct Msg {
+
+    /// Sent chatroom id
+    #[serde(rename = "chatId")]
+    pub chat_id: i64,
+
+    /// Sent chat log id
+    #[serde(rename = "logId")]
+    pub log_id: i64,
+
+    #[serde(rename = "chatLog")]
+    pub chatlog: Option<Chatlog>,
+
+    /// Sender nickname
+    #[serde(rename = "authorNickname")]
+    pub author_nick: String,
+
+    /// false If sender sent message without reading.
+    ///
+    /// If it's false, sent message doesn't decrease read count of last chat.
+    #[serde(rename = "noSeen")]
+    pub no_seen: bool,
+
+    #[serde(rename = "li")]
+    pub link_id: Option<i64>,
+
+    #[serde(rename = "notiRead")]
+    pub noti_read: bool
+
+
+}
