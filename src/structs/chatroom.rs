@@ -31,9 +31,9 @@ pub struct ChatroomListData {
     #[serde(rename = "ll")]
     pub last_chat_log_id: i64,
 
-    // /// Last Chatlog
-    // #[serde(rename = "l")]
-    // pub chatlog: Option<Chatlog>,
+    /// Last Chatlog
+    #[serde(rename = "l")]
+    pub chatlog: Option<Chatlog>,
 
     /// Member count
     #[serde(rename = "a")]
