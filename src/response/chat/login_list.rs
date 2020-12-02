@@ -5,7 +5,9 @@
  */
 
 use serde::{Serialize, Deserialize};
-use crate::{BsonData, structs::chatroom::ChatroomListData};
+use crate::BsonData;
+
+use super::LChatList;
 
 /// Contains userId, tokens, chatroom list.
 /// The purposes of tokens, revisions are unknown yet.
@@ -15,9 +17,9 @@ pub struct LoginList {
     /// Logon user id
     #[serde(rename = "userId")]
     pub user_id: i64,
-    
-    #[serde(rename = "chatDatas")]
-    pub chat_datas: Vec<ChatroomListData>,
+
+    #[serde(flatten)]
+    pub chat_list: LChatList,
 
     /// Deleted chatroom ids(?)
     #[serde(rename = "delChatIds")]

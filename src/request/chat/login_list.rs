@@ -7,6 +7,8 @@
 use serde::{Serialize, Deserialize};
 use crate::{BsonData, structs::client::ClientInfo};
 
+use super::LChatList;
+
 /// Login to loco server
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
 pub struct LoginList {
@@ -36,20 +38,11 @@ pub struct LoginList {
     /// Unknown
     pub revision: i32,
 
-    /// Unknown
+    /// Unknown. Always None(?)
     pub rp: (),
 
-    /// Known chatroom id list
-    #[serde(rename = "chatIds")]
-    pub chat_ids: Vec<i64>,
-
-    /// Unknown
-    #[serde(rename = "maxIds")]
-    pub max_ids: Vec<i64>,
-
-    /// Unknown
-    #[serde(rename = "lastTokenId")]
-    pub last_token_id: i64,
+    #[serde(flatten)]
+    pub chat_list: LChatList,
 
     /// Unknown
     #[serde(rename = "lbk")]
