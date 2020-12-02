@@ -11,8 +11,6 @@ use crate::{BsonData, structs::connection::{ConnectionData, HostData}};
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
 pub struct GetConf {
 
-    pub status: i16,
-
     /// Unknown
     pub revision: i32,
 

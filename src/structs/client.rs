@@ -6,6 +6,22 @@
 
 use serde::{Serialize, Deserialize};
 
+/// Describes response status info
+///
+/// Compare these predefined status before to process data
+#[derive(Debug, PartialEq)]
+#[repr(i16)]
+pub enum Status {
+
+    Success = 0,
+    Fail = -500,
+    Restricted = -997,
+    Maintenance = -9797,
+    NotLogon = -201,
+
+}
+
+
 /// Common client info struct
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ClientInfo {

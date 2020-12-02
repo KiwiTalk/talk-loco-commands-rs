@@ -11,8 +11,6 @@ use crate::BsonData;
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
 pub struct Checkin {
 
-    pub status: i16,
-
     /// Loco server ip
     pub host: String,
 

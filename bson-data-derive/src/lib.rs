@@ -24,7 +24,7 @@ fn impl_bson_data(ast: &syn::DeriveInput) -> TokenStream {
     let gen = quote! {
         impl crate::BsonData for #name {
             
-            fn method(&self) -> &'static str {
+            fn method() -> &'static str {
                 &stringify!(#method)
             }
 

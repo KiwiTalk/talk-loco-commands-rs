@@ -11,8 +11,6 @@ use crate::BsonData;
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
 pub struct BuyCS {
 
-    pub status: i16,
-
     /// Call server ip
     #[serde(rename = "cshost")]
     pub cs_host: String,

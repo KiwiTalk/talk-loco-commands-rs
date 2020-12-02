@@ -14,9 +14,9 @@ pub struct LoginList {
     #[serde(flatten)]
     pub client: ClientInfo,
 
-    /// Unknown, always "1"
+    /// Protocol version, seems like always "1"
     #[serde(rename = "prtVer")]
-    pub prt_ver: String,
+    pub protocol_version: String,
 
     /// Device uuid String. Usually hashed unique id.
     #[serde(rename = "duuid")]
