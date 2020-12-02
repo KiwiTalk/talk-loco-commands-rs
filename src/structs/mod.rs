@@ -6,3 +6,6 @@
 
 pub mod connection;
 pub mod client;
+pub mod chatroom;
+pub mod openlink;
+pub mod chat;
