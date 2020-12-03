@@ -18,6 +18,7 @@ pub struct ChatroomListData {
     pub id: i64,
 
     /// Chatroom type
+    ///
     /// * group = "MultiChat"
     /// * direct = "DirectChat"
     /// * pluschat = "PlusChat"
@@ -86,13 +87,8 @@ pub struct ChatroomInfo {
     #[serde(rename = "chatId")]
     pub chat_id: i64,
 
-    /// Chatroom type
-    /// * group = "MultiChat"
-    /// * direct = "DirectChat"
-    /// * pluschat = "PlusChat"
-    /// * self = "MemoChat"
-    /// * openchat group = "OM"
-    /// * openchat direct = "OD"
+    /// Chatroom type.
+    /// Check ChatroomListData chatroom_type for types.
     #[serde(rename = "type")]
     pub chatroom_type: String,
 
@@ -169,7 +165,7 @@ pub struct ChatroomInfo {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ChatroomMeta {
 
-    /// Meta type. Check ChatroomMetaType for predefined types.
+    /// Meta type. See ChatroomMetaType for predefined types.
     #[serde(rename = "type")]
     pub meta_type: i8,
 
