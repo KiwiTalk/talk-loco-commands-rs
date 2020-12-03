@@ -15,7 +15,7 @@ pub struct OpenLinkId {
     pub link_id: i64,
 
     /// OpenLink token.
-    /// Multiply to 1000 to convert to Unix time.
+    /// Multiply by 1000 to convert to Unix time.
     #[serde(rename = "otk")]
     pub open_token: i32
 

@@ -9,3 +9,4 @@ pub mod client;
 pub mod chatroom;
 pub mod openlink;
 pub mod chat;
+pub mod user;
