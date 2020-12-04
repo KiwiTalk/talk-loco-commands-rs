@@ -16,7 +16,7 @@ pub struct SyncMsg {
     #[serde(rename = "chatLogs")]
     chat_logs: Vec<Chatlog>,
 
-    #[serde(rename = "jsi", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "jsi")]
     jsi: i64,
 
     #[serde(rename = "lastTokenId")]
