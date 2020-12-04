@@ -15,7 +15,7 @@ pub mod structs;
 
 use std::io::Cursor;
 
-pub use bson_data_derive::BsonData;
+pub use talk_loco_commands_derive::BsonData;
 
 use loco_protocol::command::{self, CommandData};
 use serde::{de::DeserializeOwned, Serialize, Deserialize};

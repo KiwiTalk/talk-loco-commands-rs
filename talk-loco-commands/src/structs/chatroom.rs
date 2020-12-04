@@ -71,9 +71,9 @@ pub struct ChatroomListData {
     /// Unknown
     pub s: i64,
 
-    /// Unknown. Only appears on openchat rooms.
-    #[serde(skip_serializing_if = "Option::is_none")]
-    pub o: Option<i32>,
+    /// Openlink token.
+    #[serde(rename = "o", skip_serializing_if = "Option::is_none")]
+    pub open_token: Option<i32>,
 
     /// Unknown. Only appears on non openchat rooms.
     #[serde(skip_serializing_if = "Option::is_none")]

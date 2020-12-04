@@ -1,6 +1,9 @@
 [package]
-name = "bson-data-derive"
+name = "talk-loco-commands-derive"
+description = "talk-loco-commands derives"
+readme = "readme.md"
 version = "0.1.0"
+license = "MIT"
 authors = ["storycraft <storycraft@pancake.sh>"]
 edition = "2018"
 

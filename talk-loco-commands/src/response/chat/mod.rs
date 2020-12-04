@@ -24,6 +24,7 @@ pub mod leave;
 pub mod chg_meta;
 pub mod set_meta;
 pub mod sync_msg;
+pub mod new_mem;
 
 pub use login_list::LoginList;
 pub use msg::Msg;
@@ -44,3 +45,4 @@ pub use leave::Leave;
 pub use chg_meta::ChgMeta;
 pub use set_meta::SetMeta;
 pub use sync_msg::SyncMsg;
+pub use new_mem::NewMem;
