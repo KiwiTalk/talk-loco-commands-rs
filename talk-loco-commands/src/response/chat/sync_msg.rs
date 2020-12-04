@@ -5,11 +5,21 @@
  */
 
 use serde::{Serialize, Deserialize};
-use crate::BsonData;
+use crate::{BsonData, structs::chat::Chatlog};
 
 #[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
 pub struct SyncMsg {
 
-    
+    #[serde(rename = "isOK")]
+    is_ok: bool,
+
+    #[serde(rename = "chatLogs")]
+    chat_logs: Vec<Chatlog>,
+
+    #[serde(rename = "jsi", skip_serializing_if = "Option::is_none")]
+    jsi: i64,
+
+    #[serde(rename = "lastTokenId")]
+    last_token_id: i64,
 
 }
