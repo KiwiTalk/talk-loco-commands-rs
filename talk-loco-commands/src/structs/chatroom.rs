@@ -9,7 +9,7 @@ use serde::{Serialize, Deserialize};
 use super::{chat::Chatlog, user::DisplayUserInfo, openlink::OpenLinkId};
 
 /// LOGINLIST chatroom list item.
-/// Including eseential chatroom info.
+/// Including essential chatroom info.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ChatroomListData {
 
