@@ -121,6 +121,10 @@ impl<D: BsonData> BsonResData<D> {
         }
     }
 
+    pub fn status(&self) -> i16 {
+        self.status
+    }
+
     pub fn response(self) -> Option<D> {
         self.response
     }
