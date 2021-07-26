@@ -1,5 +1,19 @@
-[workspace]
-members = [
-    "talk-loco-commands",
-    "talk-loco-commands-derive"
-]
+[package]
+name = "talk-loco-commands"
+version = "0.3.0"
+license = "MIT"
+keywords = ["talk", "loco"]
+readme = "readme.md"
+description = "Official Loco command set"
+repository = "https://github.com/storycraft/talk-loco-commands-rs"
+authors = ["storycraft <storycraft@pancake.sh>"]
+edition = "2018"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+bson = "1.1.0"
+loco-protocol = "2.0.0"
+
+[dev-dependencies]
+rsa = "0.4.0"
+pem = "0.8.3"

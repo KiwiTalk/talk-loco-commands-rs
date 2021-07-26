@@ -2,19 +2,14 @@
 Official client/server compatible Loco commands implementation. Check doc for additional description.
 
 ## Contributing
-Check `src/request`, `src/response` directory for already implemented command datas.
-For data structs used in many places check `src/structs`.
+See `src/request`, `src/response` directory for already implemented command datas.
+For data structs used in many places see `src/structs`.
 
-Example bson command data implementation.
+Example command data implementation.
 ```rust
-use crate::BsonData;
 use serde::{Serialize, Deserialize};
 
-/* 
- * Command method will be SAMPLEDATA in this case.
- * Note the Method name will be sliced to 11 bytes.
- */
-#[derive(Debug, Clone, Serialize, Deserialize, BsonData)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SampleData {
     
     pub status: i16,
@@ -27,7 +22,7 @@ pub struct SampleData {
 ```
 MIT License
 
-Copyright (c) 2020 storycraft
+Copyright (c) 2021 storycraft
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
