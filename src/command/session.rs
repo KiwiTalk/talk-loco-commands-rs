@@ -4,10 +4,7 @@
  * Copyright (c) storycraft. Licensed under the MIT Licence.
  */
 
-use std::{
-    collections::VecDeque,
-    io::{self, Read, Write},
-};
+use std::{collections::VecDeque, io::{self, Read, Write}, time::Duration};
 
 use bson::Document;
 use loco_protocol::command::codec::StreamError;
@@ -101,7 +98,9 @@ impl<S: Read + Write> BsonCommandSession<S> {
                 }
 
                 Err(ReadError::Codec(StreamError::Io(err)))
-                    if err.kind() == io::ErrorKind::WouldBlock => {}
+                    if err.kind() == io::ErrorKind::WouldBlock => {
+                        std::thread::sleep(Duration::from_millis(1));
+                    }
 
                 Err(err) => return Err(RequestError::from(err)),
             }
