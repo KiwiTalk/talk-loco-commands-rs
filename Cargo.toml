@@ -15,5 +15,5 @@ bson = "1.1.0"
 loco-protocol = "2.0.0"
 
 [dev-dependencies]
-rsa = "0.4.0"
+rsa = "0.5.0"
 pem = "0.8.3"
