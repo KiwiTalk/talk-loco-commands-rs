@@ -13,21 +13,6 @@ pub mod response;
 
 pub mod structs;
 
-pub mod session;
+pub mod command;
+mod stream;
 
-use serde::{Deserialize, Serialize};
-
-#[derive(Debug, Clone)]
-pub struct BsonCommand<T> {
-    pub method: String,
-    pub data: T,
-}
-
-/// Common Response data
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct ResponseData<T> {
-    pub status: i16,
-
-    #[serde(flatten)]
-    pub data: Option<T>,
-}
