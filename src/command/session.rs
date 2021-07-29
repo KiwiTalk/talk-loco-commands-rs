@@ -4,7 +4,7 @@
  * Copyright (c) storycraft. Licensed under the MIT Licence.
  */
 
-use std::{collections::VecDeque, io::{self, Read, Write}, time::Duration};
+use std::{io::{self, Read, Write}, time::Duration, vec::Drain};
 
 use bson::Document;
 use loco_protocol::command::codec::StreamError;
@@ -36,10 +36,10 @@ impl From<ReadError> for RequestError {
 /// Command session with command cache.
 /// Provide methods for requesting command response and broadcast command handling.
 /// Useful when creating client.
-/// You must use non blocking mode to prevent blocking. Also using async is recommended.
+/// Using non blocking mode highly recommended to prevent blocking.
 #[derive(Debug)]
 pub struct BsonCommandSession<S> {
-    store: VecDeque<BsonCommand<Document>>,
+    store: Vec<BsonCommand<Document>>,
     manager: BsonCommandManager<S>,
 }
 
@@ -47,7 +47,7 @@ impl<S> BsonCommandSession<S> {
     /// Create new [BsonCommandSession]
     pub fn new(stream: S) -> Self {
         Self {
-            store: VecDeque::new(),
+            store: Vec::new(),
             manager: BsonCommandManager::new(stream),
         }
     }
@@ -55,7 +55,7 @@ impl<S> BsonCommandSession<S> {
     /// Create new [BsonCommandSession] with specific max write chunk size.
     pub fn with_capacity(stream: S, max_write_chunk_size: usize) -> Self {
         Self {
-            store: VecDeque::new(),
+            store: Vec::new(),
             manager: BsonCommandManager::with_capacity(stream, max_write_chunk_size),
         }
     }
@@ -93,14 +93,15 @@ impl<S: Read + Write> BsonCommandSession<S> {
                     if id == request_id && read.method == command.method {
                         return Ok(read.data);
                     } else {
-                        self.store.push_back(read);
+                        self.store.push(read);
                     }
                 }
 
                 Err(ReadError::Codec(StreamError::Io(err)))
-                    if err.kind() == io::ErrorKind::WouldBlock => {
-                        std::thread::sleep(Duration::from_millis(1));
-                    }
+                    if err.kind() == io::ErrorKind::WouldBlock =>
+                {
+                    std::thread::sleep(Duration::from_millis(1));
+                }
 
                 Err(err) => return Err(RequestError::from(err)),
             }
@@ -109,22 +110,35 @@ impl<S: Read + Write> BsonCommandSession<S> {
 }
 
 impl<S: Read> BsonCommandSession<S> {
-    /// Poll next broadcast command.
-    pub fn poll_broadcast(&mut self) -> Result<Option<BsonCommand<Document>>, ReadError> {
-        match self.store.pop_front() {
-            Some(command) => Ok(Some(command)),
+    /// Poll one broadcast command.
+    /// This method can block depending on stream.
+    pub fn poll(&mut self) -> Result<(), ReadError> {
+        self.poll_many(1)
+    }
 
-            None => match self.manager.read() {
-                Ok((_, read)) => Ok(Some(read)),
-
+    /// Poll broadcast commands up to max limit
+    pub fn poll_many(&mut self, max: usize) -> Result<(), ReadError> {
+        for _ in 0..max {
+            match self.manager.read() {
+                Ok((_, read)) => {
+                    self.store.push(read)
+                },
+    
                 Err(ReadError::Codec(StreamError::Io(err)))
                     if err.kind() == io::ErrorKind::WouldBlock =>
                 {
-                    Ok(None)
+                    break;
                 }
-
-                Err(err) => Err(ReadError::from(err)),
+    
+                Err(err) => return Err(ReadError::from(err)),
             }
         }
+
+        Ok(())
+    }
+
+    /// Drain every broadcast commands stored
+    pub fn broadcasts(&mut self) -> Drain<'_, BsonCommand<Document>> {
+        self.store.drain(..)
     }
 }

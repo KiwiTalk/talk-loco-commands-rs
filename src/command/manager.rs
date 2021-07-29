@@ -73,12 +73,12 @@ pub struct BsonCommandManager<S> {
 }
 
 impl<S> BsonCommandManager<S> {
-    /// Create new [BsonCommandSession] from Stream
+    /// Create new [BsonCommandManager] from Stream
     pub fn new(stream: S) -> Self {
         Self::with_capacity(stream, 2048)
     }
 
-    /// Create new [BsonCommandSession] from Stream with specific max write chunk size.
+    /// Create new [BsonCommandManager] from Stream with specific max write chunk size.
     pub fn with_capacity(stream: S, max_write_chunk_size: usize) -> Self {
         Self {
             current_id: 0,
